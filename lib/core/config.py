@@ -28,14 +28,15 @@ save_folder = 'exp_' + str(datetime.datetime.now(tz=KST))[5:-16]
 save_folder = save_folder.replace(" ", "_")
 save_folder_path = 'experiment/{}'.format(save_folder)
 
-cfg.output_dir = osp.join(cfg.root_dir, save_folder_path)
-cfg.graph_dir = osp.join(cfg.output_dir, 'graph')
-cfg.vis_dir = osp.join(cfg.output_dir, 'vis')
-cfg.res_dir = osp.join(cfg.output_dir, 'result')
-cfg.checkpoint_dir = osp.join(cfg.output_dir, 'checkpoint')
+# cfg.output_dir = osp.join(cfg.root_dir, save_folder_path)
+# cfg.output_dir = osp.join(cfg.root_dir, "experiment", "output")
+# cfg.graph_dir = osp.join(cfg.output_dir, 'graph')
+# cfg.vis_dir = osp.join(cfg.output_dir, 'vis')
+# cfg.res_dir = osp.join(cfg.output_dir, 'result')
+# cfg.checkpoint_dir = osp.join(cfg.output_dir, 'checkpoint')
 
-print("Experiment Data on {}".format(cfg.output_dir))
-init_dirs([cfg.output_dir, cfg.graph_dir, cfg.vis_dir, cfg.checkpoint_dir])
+# print("Experiment Data on {}".format(cfg.output_dir))
+# init_dirs([cfg.output_dir, cfg.graph_dir, cfg.vis_dir, cfg.checkpoint_dir])
 
 """ Dataset """
 cfg.DATASET = edict()

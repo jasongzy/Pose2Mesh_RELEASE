@@ -8,8 +8,8 @@ from manopth.manolayer import ManoLayer
 
 
 class MANO(object):
-    def __init__(self):
-        self.layer = self.get_layer()
+    def __init__(self, side='right'):
+        self.layer = self.get_layer(side)
         self.vertex_num = 778
         self.face = self.layer.th_faces.numpy()
         self.joint_regressor = self.layer.th_J_regressor.numpy()
@@ -29,5 +29,5 @@ class MANO(object):
         self.joint_regressor = np.concatenate((self.joint_regressor, thumbtip_onehot, indextip_onehot, middletip_onehot, ringtip_onehot, pinkytip_onehot))
         self.joint_regressor = self.joint_regressor[[0, 13, 14, 15, 16, 1, 2, 3, 17, 4, 5, 6, 18, 10, 11, 12, 19, 7, 8, 9, 20],:]
 
-    def get_layer(self):
-        return ManoLayer(mano_root=osp.join(cfg.mano_dir, 'mano', 'models'), flat_hand_mean=False, use_pca=False) # load right hand MANO model
+    def get_layer(self, side='right'):
+        return ManoLayer(mano_root=osp.join(cfg.mano_dir, 'mano', 'models'), flat_hand_mean=False, use_pca=False, side = side) # load right hand MANO model

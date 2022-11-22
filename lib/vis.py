@@ -99,16 +99,19 @@ def vis_2d_keypoints(img, kps, kps_line, bbox=None, kp_thre=0.4, alpha=1):
     for l in range(len(kps_line)):
         i1 = kps_line[l][0]
         i2 = kps_line[l][1]
+        # p1 = kps[0, i1].astype(np.int32), kps[1, i1].astype(np.int32)
+        # p2 = kps[0, i2].astype(np.int32), kps[1, i2].astype(np.int32)
         p1 = kps[0, i1].astype(np.int32), kps[1, i1].astype(np.int32)
         p2 = kps[0, i2].astype(np.int32), kps[1, i2].astype(np.int32)
+        color_idx = (l // 4) * 4
         if kps[2, i1] > kp_thre and kps[2, i2] > kp_thre:
             cv2.line(
-                kp_mask, p1, p2, color=colors[l], thickness=2, lineType=cv2.LINE_AA)
+                kp_mask, p1, p2, color=colors[color_idx], thickness=2, lineType=cv2.LINE_AA)
         if kps[2, i1] > kp_thre:
             cv2.circle(
-                kp_mask, p1, radius=3, color=colors[l], thickness=-1, lineType=cv2.LINE_AA)
+                kp_mask, p1, radius=3, color=colors[color_idx], thickness=-1, lineType=cv2.LINE_AA)
         if kps[2, i2] > kp_thre:
-            cv2.circle(kp_mask, p2, radius=3, color=colors[l], thickness=-1, lineType=cv2.LINE_AA)
+            cv2.circle(kp_mask, p2, radius=3, color=colors[color_idx], thickness=-1, lineType=cv2.LINE_AA)
 
     return cv2.addWeighted(img, 1.0 - alpha, kp_mask, alpha, 0)
 
