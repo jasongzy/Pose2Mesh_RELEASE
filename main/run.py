@@ -300,7 +300,7 @@ if __name__ == '__main__':
     right_joint_input = joint_input[:,112:133,0:2].copy()
 
     if begin_frame < end_frame:
-        videowrite = cv2.VideoWriter(output_path + f'result_video.mp4', -1, args.fps, img_size)
+        videowrite = cv2.VideoWriter(output_path + f'result_video.mp4', cv2.VideoWriter_fourcc(*'mp4v'), args.fps, img_size)
 
         for frame in range(begin_frame, min(end_frame,len(joint_input))):
             print("deal frame", frame)

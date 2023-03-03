@@ -90,4 +90,6 @@ class Renderer:
         self.scene.remove_node(mesh_nodes['left'])
         self.scene.remove_node(cam_node)
 
+        self.renderer.delete()
+
         return image
